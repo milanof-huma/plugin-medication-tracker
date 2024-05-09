@@ -1,0 +1,126 @@
+project_name: MedicationTracker
+server_version: 1.30.0
+sdk_version: master
+api_version: v1
+build: '1'
+repos:
+  - repo: .
+    version: .
+    server_config: app.components.config.config.RPMExtensionServerConfig
+    components:
+      - OnlineOfflineCallComponent
+      - InferenceComponent
+      - RPMAuthorizationComponent
+      - RPMModuleResultComponent
+      - RPMExportComponent
+      - BillingIntegrationComponent
+      - SurgeryFormsComponent
+      - name: RPMAuthHelperComponent
+        when:
+          - envbool.MP_DEBUG_ENABLED
+          - envbool.MP_DEBUG_ROUTER_ENABLED
+          - envbool.MP_TEST_ENVIRONMENT_ENABLED
+      - name: BillingComponent
+        when: envbool.CLASS2B_SUPPORT
+
+    modules:
+      - ArmFatigueModule
+      - ECGModule
+      - RPMBMIModule
+  - repo: https://github.com/huma-engineering/huma-server-sdk.git
+    version: master
+    modules_roots: sdk/module_result/modules
+    modules:
+      - AdditionalQoLModule
+      - AHQModule
+      - AirQuality
+      - AwarenessTrainingModule
+      - AZFurtherPregnancyKeyActionTriggerModule
+      - AZGroupKeyActionTriggerModule
+      - AZScreeningQuestionnaireModule
+      - BackgroundInformationModule
+      - BloodGlucoseModule
+      - BloodPressureModule
+      - BreastFeedingStatusModule
+      - BreastFeedingUpdateModule
+      - BreathingModule
+      - BreathlessnessModule
+      - BVIModule
+      - Covid19DailyCheckInModule
+      - Covid19RiskScoreModule
+      - CVDRiskScoreModule
+      - DailyCheckInModule
+      - DashQuestionnaireModule
+      - DiabetesDistressScoreModule
+      - ECGAliveCorModule
+      - ECGHealthKitModule
+      - EQ5D5LModule
+      - FeverAndPainDrugsModule
+      - FJSHipScoreModule
+      - FJSKneeScoreModule
+      - GeneralAnxietyDisorderModule
+      - HealthScoreModule
+      - HealthStatusModule
+      - HeartRateModule
+      - HeightModule
+      - HeightZScoreModule
+      - HighFrequencyHeartRateModule
+      - HighFrequencyStepModule
+      - IKDCModule
+      - InfantFollowUpModule
+      - JournalModule
+      - KCCQQuestionnaireModule
+      - KOOSQuestionnaireModule
+      - LysholmTegnerModule
+      - MedicalHistoryModule
+      - MedicationTrackerModule
+      - NDIModule
+      - NorfolkQuestionnaireModule
+      - OACSModule
+      - OARSModule
+      - ODIModule
+      - OtherVaccineModule
+      - OxfordHipScoreQuestionnaireModule
+      - OxfordKneeScoreQuestionnaireModule
+      - OxfordShoulderScoreQuestionnaireModule
+      - OxygenSaturationModule
+      - PeakFlowModule
+      - PhotoModule
+      - PostVaccinationModule
+      - PregnancyFollowUpModule
+      - PregnancyStatusModule
+      - PregnancyUpdateModule
+      - PROMISGlobalHealthModule
+      - PulseOximetryModule
+      - QuestionnaireModule
+      - RespiratoryRateModule
+      - RestingBreathingRateModule
+      - RestingHeartRateModule
+      - SF36QuestionnaireModule
+      - SpatialSpaniOSModule
+      - SRSModule
+      - StepModule
+      - SurgeryDetailsModule
+      - SymptomModule
+      - TemperatureModule
+      - VaccinationDetailsModule
+      - WaistToHeightModule
+      - WeightModule
+      - name: AsthmaControlTestModule
+        when: envbool.CLASS2B_SUPPORT
+      - name: CATModule
+        when: envbool.CLASS2B_SUPPORT
+      - name: MGADLModule
+        when: envbool.CLASS2B_SUPPORT
+      - name: PerceivedStressScaleModule
+        when: envbool.CLASS2B_SUPPORT
+      - name: SelfRatedHealthModule
+        when: envbool.CLASS2B_SUPPORT
+      - name: SleepModule
+        when: envbool.CLASS2B_SUPPORT
+      - name: SymptomV2Module
+        when: envbool.CLASS2B_SUPPORT
+      - name: VR12Module
+        when: envbool.CLASS2B_SUPPORT
+      - name: WHQModule
+        when: envbool.CLASS2B_SUPPORT
