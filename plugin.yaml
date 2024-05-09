@@ -1,0 +1,16 @@
+name: Medication Tracker
+id: medication-tracker
+repo: github.com/mialnof-huma/plugin-medication-tracker
+author: Milano Fili
+description: |
+  # Header
+  Write anything you want including Markdown
+components:
+  ios:
+    folder: ios
+  android:
+    folder: andriod
+  backend:
+    folder: python
+  frontend:
+    folder: portal
